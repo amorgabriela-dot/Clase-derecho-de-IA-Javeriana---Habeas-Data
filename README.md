@@ -2,9 +2,9 @@
 
 **Pontificia Universidad Javeriana · 2026-II · Docente: Pedro Ardila**
 
-> **Estudiante:** [escribe aquí tu nombre completo]
-> **Nombre del proyecto:** [escribe aquí el nombre de tu herramienta]
-> **Fecha de inicio:** [AAAA-MM-DD]
+> **Estudiante:** [Gabriela Amor]
+> **Nombre del proyecto:** [Habeas Data]
+> **Fecha de inicio:** [2026-08-18]
 
 ---
 
@@ -22,9 +22,11 @@ Bienvenido/a a tu repositorio de proyecto. **Este archivo es tu tablero de mando
 
 ### 1.1 El problema jurídico
 ¿Qué problema **real del derecho colombiano** resuelve tu herramienta? ¿Quién lo sufre hoy y cómo lo resuelve sin tu herramienta?
+Esta herramienta es diseñada para orientar a los usuarios sobre el impacto que tiene el aceptar los permisos de acceso a información personal. Mediante una composición y un análisis previo de las cláusulas de uso y de referentes legislativos sobre habeas data y protección de datos.
 
 ### 1.2 Usuarios
 ¿Quién va a usarla? Describe a tu usuario ideal en una frase (ej. *"un arrendatario bogotano que le subieron el canon de arrendamiento más del límite legal"*). Recuerda que al final necesitas **al menos un usuario real** que la pruebe.
+Usuarios que van a registrarse en una nueva aplicación o página web y tiene que aceptar los términos y condiones o cookies para poder empezar. 
 
 ### 1.3 Qué hace y qué NO hace (alcance)
 | ✅ Sí hace | ❌ No hace |
