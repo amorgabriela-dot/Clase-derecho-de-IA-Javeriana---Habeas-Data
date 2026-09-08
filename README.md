@@ -26,7 +26,7 @@ Esta herramienta es diseñada para orientar a los usuarios sobre el impacto que 
 
 ### 1.2 Usuarios
 ¿Quién va a usarla? Describe a tu usuario ideal en una frase (ej. *"un arrendatario bogotano que le subieron el canon de arrendamiento más del límite legal"*). Recuerda que al final necesitas **al menos un usuario real** que la pruebe.
-Usuarios que van a registrarse en una nueva aplicación o página web y tiene que aceptar los términos y condiones o cookies para poder empezar. 
+Usuarios que van a registrarse en una nueva aplicación o página web y tiene que aceptar los términos y condiones o cookies para poder empezar. Personas que van a instalar una nueva app y dudan si es seguro conceder permisos sensibles (acceso a contactos, galería, ubicación en tiempo real o micrófono).
 
 ### 1.3 Qué hace y qué NO hace (alcance)
 | ✅ Sí hace | ❌ No hace |
