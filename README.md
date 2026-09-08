@@ -31,19 +31,19 @@ Usuarios que van a registrarse en una nueva aplicación o página web y tiene qu
 ### 1.3 Qué hace y qué NO hace (alcance)
 | ✅ Sí hace | ❌ No hace |
 | --- | --- |
-| [funcionalidad 1] | [fuera de alcance 1] |
-| [funcionalidad 2] | [fuera de alcance 2] |
+| [Analiza y contrasta cláusulas de términos y condiciones con la regulación colombiana de Hábeas Data para generar un índice de riesgo] | [No brinda representación ni asesoría legal formal, ni sustituye la interposición de quejas ante la Superintendencia de Industria y Comercio (SIC).] |
+| [Detecta permisos excesivos o injustificados (p. ej., acceso a contactos o localización) frente a la finalidad real del servicio prestado.] | [No revisa el código fuente ni la infraestructura técnica de los servidores de las aplicaciones para verificar vulnerabilidades de ciberseguridad.] |
 
 *Consejo de abogado: un alcance pequeño y perfecto vale más que uno grande y roto.*
 
 ### 1.4 Marco jurídico y fuentes
 ¿Qué normas alimentan tu herramienta? Lista tu corpus normativo (leyes, decretos, sentencias — debe ser **pequeño y público**):
-- [ ] Norma/sentencia 1: [nombre + enlace]
-- [ ] Norma/sentencia 2: [nombre + enlace]
+- [ ] Norma/sentencia 1: [Ley Estatutaria 1581 de 2012 (Disposiciones generales para la protección de datos personales) https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=49981]
+- [ ] Norma/sentencia 2: [Decreto 1377 de 2013 (Reglamentación parcial de la Ley 1581 de 2012 en materia de autorización y políticas de tratamiento) uncionpublica.gov.co/eva/gestornormativo/norma.php?i=53646]
 
 ### 1.5 Nombre y lema
 Un nombre corto para tu herramienta y una frase que explique qué hace (la usarás en la demo del día de presentaciones).
-
+PrivaCheck CO - "Claridad y control sobre tus datos personales en un solo clic."
 ---
 
 ## 🗺️ Parte 2 — Plan de desarrollo
