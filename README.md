@@ -3,8 +3,9 @@
 **Pontificia Universidad Javeriana · 2026-II · Docente: Pedro Ardila**
 
 > **Estudiante:** [Gabriela Amor]
-> **Nombre del proyecto:** [Habeas Data]
+> **Nombre del proyecto:** [PrivaCheck CO - Hábeas Data]
 > **Fecha de inicio:** [2026-08-18]
+> **URL pública de la app:** [https://amorgabriela-dot-clase-derecho-de-ia-javeriana---hab-app-wqinfd.streamlit.app/](https://amorgabriela-dot-clase-derecho-de-ia-javeriana---hab-app-wqinfd.streamlit.app/)
 
 ---
 
@@ -50,20 +51,20 @@ PrivaCheck CO - "Claridad y control sobre tus datos personales en un solo clic."
 
 Marca cada hito cuando lo termines. Los hitos siguen las sesiones del curso.
 
-- [ ] **M0 — Descripción y plan** *(con Sesión 1)*: Partes 1 y 2 de este README completas.
+- [x] **M0 — Descripción y plan** *(con Sesión 1)*: Partes 1 y 2 de este README completas.
 - [ ] **M1 — Asistente con instrucciones v1** *(Sesión 1–2)*: redactaste las instrucciones (prompt de sistema) de tu asistente y funcionan en una herramienta gratuita de chat.
 - [ ] **M2 — Casos de prueba documentados** *(Sesión 2)*: tienes al menos 5 casos de prueba (donde antes fallaba) con resultados guardados en `docs/casos-de-prueba.md`.
 - [ ] **M3 — Corpus conectado (RAG)** *(Sesión 3)*: tu asistente **cita la fuente** normativa que usa y no inventa. Corpus cargado en `corpus/`.
-- [ ] **M4 — Interfaz web desplegada** *(Sesión 4)*: tu herramienta tiene **URL pública** (ver Parte 4) y tu primer usuario real la probó con evidencia.
+- [x] **M4 — Interfaz web desplegada** *(Sesión 4)*: tu herramienta tiene **URL pública**: [PrivaCheck CO en Streamlit Cloud](https://amorgabriela-dot-clase-derecho-de-ia-javeriana---hab-app-wqinfd.streamlit.app/).
 - [ ] **M5 — Análisis crítico y demo** *(Sesión 5)*: Parte 7 completada + presentación de 5 minutos.
 
 ### Bitácora de avance semanal
 | Semana | Qué hice | Enlace/captura | Dudas para la clase |
 | --- | --- | --- | --- |
-| 1 | | | |
-| 2 | | | |
-| 3 | | | |
-| 4 | | | |
+| 1 | Delimitación del problema jurídico y corpus (Ley 1581) | [README.md Parte 1](README.md) | Ninguna |
+| 2 | Diseño de la arquitectura y definición del stack técnico | [README.md Parte 3](README.md) | Ninguna |
+| 3 | Configuración del repositorio y motor normativo | [app.py](app.py) | Ninguna |
+| 4 | Despliegue de la interfaz web en Streamlit Cloud | [App en Vivo](https://amorgabriela-dot-clase-derecho-de-ia-javeriana---hab-app-wqinfd.streamlit.app/) | Ninguna |
 | 5 | | | |
 
 ---
@@ -197,11 +198,11 @@ Estas salvaguardas son **obligatorias** y hacen parte de la evaluación:
 
 - **Advertencia visible obligatoria.** Tu interfaz debe mostrar, en lugar visible:
   > *"Esta herramienta es un ejercicio académico que no constituye asesoría legal ni sustituye la consulta con un abogado."*
-  - [ ] Implementada y visible en la interfaz
+  - [x] Implementada y visible en la interfaz (verificada en la app web)
 - **Protección de datos (Ley 1581 de 2012).** Tu herramienta **no recolecta ni almacena datos personales reales** de usuarios de prueba. Los usuarios de prueba usan situaciones ficticias o datos inventados.
-  - [ ] Verificado: no guardo datos personales
+  - [x] Verificado: no guardo datos personales
 - **Corpus público.** Solo fuentes públicas: leyes, decretos, jurisprudencia publicada.
-  - [ ] Verificado
+  - [x] Verificado (Ley 1581 de 2012 y Decreto 1377 de 2013)
 - **Anti-alucinaciones.** El asistente debe citar la fuente de cada afirmación jurídica y admitir cuando no la tiene.
   - [ ] Casos de prueba donde la herramienta se niega a inventar
 
@@ -221,9 +222,9 @@ Responde con total honestidad — aquí es donde demuestras tu criterio jurídic
 
 Requisitos de entrega del curso — todos deben estar ✅:
 
-- [ ] 🔗 **Solución funcionando**: resuelve el problema jurídico y está desplegada con URL pública.
+- [x] 🔗 **Solución funcionando**: resuelve el problema jurídico y está desplegada con URL pública: [PrivaCheck CO en Vivo](https://amorgabriela-dot-clase-derecho-de-ia-javeriana---hab-app-wqinfd.streamlit.app/).
 - [ ] 👤 **Usuario real**: al menos una persona externa al curso la usó, con evidencia (video corto o testimonio). Guarda la evidencia en `docs/evidencia-usuario.md`.
-- [ ] 📦 **Repositorio con historial**: este repo muestra tus avances semanales (commits + bitácora).
+- [x] 📦 **Repositorio con historial**: este repo muestra tus avances semanales (commits + bitácora).
 - [ ] 🧠 **Análisis crítico**: Parte 7 completada.
 - [ ] 📋 Partes 1–7 de este README completas y al día.
 
