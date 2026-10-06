@@ -78,17 +78,6 @@ Todo es **gratuito y no exige tarjeta de crédito**. Tu proyecto final debería 
                           [Tu corpus normativo (RAG)]
 ```
 
-| Pieza | Herramienta recomendada | Para qué sirve (en cristiano) |
-| --- | --- | --- |
-| **Interfaz web** | **v0.dev** (genera una app Next.js) o **Streamlit** (si tu agente trabaja en Python) | Lo que el usuario ve: cajas de texto, botones. Se la describes a la IA y ella la construye. |
-| **Orquestación** | **LangChain / LangGraph** | El "cerebro intermedio": toma la pregunta del usuario, busca en tus normas, arma el prompt y llama al modelo. |
-| **Modelo (LLM)** | **OpenRouter** — modelos con etiqueta `:free` | El "cerebro" que redacta. OpenRouter te da acceso a modelos gratuitos con una sola cuenta y una sola API key. |
-| **Memoria de fuentes (RAG)** | LangChain + almacén de vectores (**Chroma** o **FAISS** en local; **Supabase** si necesitas base de datos en la nube) | La técnica para que el modelo responda **con tus normas** y no con lo que "recuerda" (que puede ser una alucinación jurídica). |
-| **Trazabilidad** *(opcional)* | **LangSmith** (plan gratuito) | Ver qué le pasó a cada respuesta por dentro. Útil para depurar. |
-
-> 🔑 **Regla de oro:** tu `OPENROUTER_API_KEY` va en una **variable de entorno**, jamás pegada en el código ni en el chat. Si una clave se filtra en GitHub, revócala de inmediato en openrouter.ai → Keys.
-
-Pídele a tu agente de IA que te explique esta arquitectura con tu proyecto concreto antes de escribir una línea de código.
 | Pieza | Herramienta recomendada | Para qué sirve (en cristiano) | Elección para PrivaCheck CO |
 | --- | --- | --- | --- |
 | **Interfaz web** | **v0.dev** (app Next.js) o **Streamlit** (Python) | Lo que el usuario ve: cajas de texto, botones. | **Streamlit** (Python): rápida, ligera y permite en un solo entorno conectar la interfaz con la lógica jurídica. |
@@ -96,34 +85,84 @@ Pídele a tu agente de IA que te explique esta arquitectura con tu proyecto conc
 | **Modelo (LLM)** | **OpenRouter** — modelos `:free` | El "cerebro" que redacta y analiza. | **OpenRouter** (modelos como `meta-llama/llama-3.3-70b-instruct:free` o `google/gemini-2.0-flash-exp:free`). |
 | **Memoria de fuentes (RAG)** | LangChain + almacén de vectores (**Chroma** o **FAISS**) | Garantiza que el modelo responda citando la norma y evite alucinaciones jurídicas. | **Chroma / FAISS local** cargado con la Ley 1581 de 2012 y el Decreto 1377 de 2013 en `/corpus`. |
 | **Trazabilidad** *(opcional)* | **LangSmith** (plan gratuito) | Monitorear tokens, latencia y depurar el pipeline. | Opcional para depurar las respuestas del evaluador de cláusulas. |
+
+> 🔑 **Regla de oro:** tu `OPENROUTER_API_KEY` va en una **variable de entorno** (`.env`), jamás pegada en el código ni en el chat. Si una clave se filtra en GitHub, revócala de inmediato en openrouter.ai → Keys.
+
+### 3.1 Arquitectura detallada para PrivaCheck CO
+
+```
+   [Usuario ingresa Términos/Permisos de una App]
+                         │
+                         ▼
+             [Interfaz Web: Streamlit]
+                         │
+                         ▼
+         [Orquestador Jurídico: LangChain]
+                         │
+        ┌────────────────┴────────────────┐
+        ▼                                 ▼
+[Corpus RAG: Ley 1581/2012       [Prompt del Sistema PrivaCheck]
+ & Decreto 1377/2013]            - Principios de finalidad, libertad,
+ (Búsqueda semántica de           veracidad, acceso, seguridad.
+ artículos y deberes)             - Reglas de semáforo de riesgo.
+        │                                 │
+        └────────────────┬────────────────┘
+                         ▼
+         [Modelo LLM vía OpenRouter (:free)]
+                         │
+                         ▼
+    [Resultado estructurado para el usuario]
+    1. Índice de Riesgo (Bajo / Medio / Alto)
+    2. Alertas de permisos desproporcionados
+    3. Cita exacta del artículo normativo
+    4. Explicación clara y advertencia legal
+```
+
+### 3.2 ¿Cómo funciona este flujo paso a paso?
+1. **Entrada del usuario:** El usuario pega un fragmento de una política de privacidad (ej. *"Nos autoriza a ceder sus datos a terceros con fines publicitarios y a acceder a sus contactos sin previo aviso"*).
+2. **Consulta al RAG:** LangChain busca en el corpus normativo qué artículos regulan la autorización previa, la circulación restringida y la finalidad legítima (ej. Art. 4 literales b y f, Art. 9 de la Ley 1581 de 2012).
+3. **Construcción del contexto:** Se le entrega al LLM la cláusula del usuario junto a los fragmentos normativos exactos recuperados.
+4. **Evaluación jurídica:** El modelo evalúa si la cláusula viola el principio de finalidad o necesidad, califica el riesgo (Alto) y genera un diagnóstico sin tecnicismos innecesarios.
+5. **Salida protegida:** Se muestra el diagnóstico al usuario incluyendo siempre la advertencia legal de la Parte 6.
+
 ---
 
 ## 🚀 Parte 4 — Ruta de despliegue
 
-Tu meta: **una URL pública** que cualquiera pueda abrir. Elige una ruta:
+Tu meta: **una URL pública** que cualquiera pueda abrir.
 
-### Opción A — Vercel ⭐ (recomendada, la del curso)
-1. Sube tu código a este repo de GitHub (ya lo tienes ✅).
-2. Crea cuenta gratis en [vercel.com](https://vercel.com) con tu GitHub.
-3. "Add New Project" → importa tu repo → Deploy.
-4. Cada `git push` re-despliega solo.
-- ✅ Ideal para Next.js/Streamlit (Streamlit via [streamlit.io/community-cloud](https://streamlit.io)) · gratis · sin servidor.
+### 4.1 Ruta elegida para PrivaCheck CO: Streamlit Community Cloud ⭐
+Dado que nuestra arquitectura usa Python y Streamlit (definida en la Parte 3), la ruta más directa, gratuita y sin tarjeta de crédito es **[Streamlit Community Cloud](https://streamlit.io/community-cloud)** (integrada directamente con el repositorio de GitHub).
 
-### Opción B — Render / Railway (plan gratuito)
-Si tu proyecto es Python o necesita un servidor corriendo: crea cuenta, conecta el repo, y te dan una URL pública. Nota: los planes free "duermen" tras inactividad (la primera carga tarda ~1 min).
+#### ¿Por qué esta opción para PrivaCheck CO?
+- **Cero servidores:** No requiere configurar Linux, Docker ni terminales complejas.
+- **Sincronización automática:** Cada cambio subido a la rama `main` en GitHub re-despliega la aplicación en segundos.
+- **Manejo seguro de secretos:** Permite registrar la `OPENROUTER_API_KEY` en el panel de control de Streamlit (`Secrets`), manteniéndola 100% oculta y segura.
+- **Archivo principal:** `app.py`
+- **Gestión de librerías:** Gestionada automáticamente mediante el archivo `requirements.txt`.
 
-### Opción C — Servidor propio o Docker *(solo si A y B no te dan lo que necesitas)*
-Si necesitas algo que Vercel no ofrece (ej. procesos de fondo, bases de datos pesadas):
-- **Gratis en la nube:** VM gratuita de Google Cloud (`e2-micro` free tier), AWS free tier (12 meses), u Oracle Cloud free.
-- **Docker local:** tu agente puede escribir un `Dockerfile` para que el proyecto corra igual en cualquier máquina. Útil para demostraciones sin internet, pero **no cumple el requisito de URL pública** — combínalo con A o B.
+#### Paso a paso para el despliegue:
+1. Asegurarse de que `app.py` y `requirements.txt` estén en la raíz del repositorio de GitHub.
+2. Ingresar a [share.streamlit.io](https://share.streamlit.io) e iniciar sesión con tu cuenta de GitHub (`amorgabriela-dot`).
+3. Hacer clic en **"New app"**.
+4. Seleccionar el repositorio: `amorgabriela-dot/Clase-derecho-de-IA-Javeriana---Habeas-Data`, rama: `main`, archivo principal: `app.py`.
+5. En **"Advanced settings" > "Secrets"**, agregar la variable:
+   ```toml
+   OPENROUTER_API_KEY = "tu_clave_de_openrouter_aqui"
+   ```
+6. Hacer clic en **"Deploy!"**. Streamlit generará tu URL pública de inmediato.
+
+---
 
 ### Checklist de despliegue ✅
+- [ ] Archivo `requirements.txt` creado con dependencias (`streamlit`, `langchain`, etc.) ✅
+- [ ] Archivo `.gitignore` activo para evitar filtraciones de `.env` ✅
+- [ ] Aplicación `app.py` lista con interfaz y advertencia legal visible
+- [ ] Despliegue completado en Streamlit Community Cloud
 - [ ] URL pública funciona en el navegador de otra persona (pídele a alguien que la abra)
-- [ ] La advertencia de la Parte 7 es **visible** en la interfaz
-- [ ] No hay API keys ni secretos en el código (verifica con una búsqueda de `sk-` en el repo)
-- [ ] Anota la URL aquí: **`[tu-url-publica]`**
-
-> El dominio propio (.com, .co) **no es necesario** — la URL gratuita de Vercel/Render es suficiente para el curso.
+- [ ] La advertencia de la Parte 6 es **visible** en la interfaz
+- [ ] No hay API keys ni secretos en el código (verificado en el repo)
+- [ ] URL pública asignada: **`https://privacheck-co.streamlit.app`** (o la asignada por Streamlit Cloud)
 
 ---
 
