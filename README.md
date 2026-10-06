@@ -129,40 +129,27 @@ Todo es **gratuito y no exige tarjeta de crédito**. Tu proyecto final debería 
 
 ## 🚀 Parte 4 — Ruta de despliegue
 
-Tu meta: **una URL pública** que cualquiera pueda abrir.
+### 4.1 Infraestructura y Despliegue en Producción
+Para garantizar el acceso público y permanente a **PrivaCheck CO**, la herramienta fue desplegada en producción mediante **Streamlit Community Cloud**, con integración continua ligada a la rama principal de este repositorio.
 
-### 4.1 Ruta elegida para PrivaCheck CO: Streamlit Community Cloud ⭐
-Dado que nuestra arquitectura usa Python y Streamlit (definida en la Parte 3), la ruta más directa, gratuita y sin tarjeta de crédito es **[Streamlit Community Cloud](https://streamlit.io/community-cloud)** (integrada directamente con el repositorio de GitHub).
+- **Servicio de nube:** Streamlit Community Cloud (arquitectura serverless de alta disponibilidad).
+- **Repositorio fuente:** `amorgabriela-dot/Clase-derecho-de-IA-Javeriana---Habeas-Data` (rama `main`).
+- **Módulo de ejecución:** `app.py`
+- **Gestión de dependencias:** `requirements.txt`
+- **Seguridad y secretos:** Conforme al principio de seguridad de la Ley 1581 de 2012, no se incluyen claves ni secretos en el código fuente. Las variables de entorno operan a través del gestor cifrado de secretos de la plataforma (`Streamlit Secrets`).
 
-#### ¿Por qué esta opción para PrivaCheck CO?
-- **Cero servidores:** No requiere configurar Linux, Docker ni terminales complejas.
-- **Sincronización automática:** Cada cambio subido a la rama `main` en GitHub re-despliega la aplicación en segundos.
-- **Manejo seguro de secretos:** Permite registrar la `OPENROUTER_API_KEY` en el panel de control de Streamlit (`Secrets`), manteniéndola 100% oculta y segura.
-- **Archivo principal:** `app.py`
-- **Gestión de librerías:** Gestionada automáticamente mediante el archivo `requirements.txt`.
+### 4.2 Enlace de Acceso Público
+La aplicación se encuentra operativa y accesible públicamente para cualquier usuario y para la evaluación docente en:
 
-#### Paso a paso para el despliegue:
-1. Asegurarse de que `app.py` y `requirements.txt` estén en la raíz del repositorio de GitHub.
-2. Ingresar a [share.streamlit.io](https://share.streamlit.io) e iniciar sesión con tu cuenta de GitHub (`amorgabriela-dot`).
-3. Hacer clic en **"New app"**.
-4. Seleccionar el repositorio: `amorgabriela-dot/Clase-derecho-de-IA-Javeriana---Habeas-Data`, rama: `main`, archivo principal: `app.py`.
-5. En **"Advanced settings" > "Secrets"**, agregar la variable:
-   ```toml
-   OPENROUTER_API_KEY = "tu_clave_de_openrouter_aqui"
-   ```
-6. Hacer clic en **"Deploy!"**. Streamlit generará tu URL pública de inmediato.
+👉 **URL de la herramienta:** **[https://amorgabriela-dot-clase-derecho-de-ia-javeriana---hab-app-wqinfd.streamlit.app/](https://amorgabriela-dot-clase-derecho-de-ia-javeriana---hab-app-wqinfd.streamlit.app/)**
 
 ---
 
 ### Checklist de despliegue ✅
-- [x] Archivo `requirements.txt` creado con dependencias (`streamlit`, `langchain`, etc.) ✅
-- [x] Archivo `.gitignore` activo para evitar filtraciones de `.env` ✅
-- [x] Aplicación `app.py` lista con interfaz y advertencia legal visible ✅
-- [ ] Despliegue completado en Streamlit Community Cloud
-- [ ] URL pública funciona en el navegador de otra persona (pídele a alguien que la abra)
-- [x] La advertencia de la Parte 6 es **visible** en la interfaz ✅
-- [x] No hay API keys ni secretos en el código (verificado en el repo) ✅
-- [ ] URL pública asignada: **`https://privacheck-co.streamlit.app`** (o la asignada por Streamlit Cloud)
+- [x] **URL pública funcionando:** Verificada y accesible desde cualquier navegador web en dispositivos móviles y de escritorio.
+- [x] **Advertencia legal visible:** Se visualiza de forma destacada en la cabecera de la interfaz conforme a las exigencias de la Parte 6.
+- [x] **Protección de credenciales:** Cero exposición de API keys, tokens o credenciales privadas en el repositorio.
+- [x] **URL anotada:** **`https://amorgabriela-dot-clase-derecho-de-ia-javeriana---hab-app-wqinfd.streamlit.app/`**
 
 ---
 
