@@ -89,7 +89,13 @@ Todo es **gratuito y no exige tarjeta de crédito**. Tu proyecto final debería 
 > 🔑 **Regla de oro:** tu `OPENROUTER_API_KEY` va en una **variable de entorno**, jamás pegada en el código ni en el chat. Si una clave se filtra en GitHub, revócala de inmediato en openrouter.ai → Keys.
 
 Pídele a tu agente de IA que te explique esta arquitectura con tu proyecto concreto antes de escribir una línea de código.
-
+| Pieza | Herramienta recomendada | Para qué sirve (en cristiano) | Elección para PrivaCheck CO |
+| --- | --- | --- | --- |
+| **Interfaz web** | **v0.dev** (app Next.js) o **Streamlit** (Python) | Lo que el usuario ve: cajas de texto, botones. | **Streamlit** (Python): rápida, ligera y permite en un solo entorno conectar la interfaz con la lógica jurídica. |
+| **Orquestación** | **LangChain / LangGraph** | El "cerebro intermedio": toma la cláusula o permiso, busca en las normas y arma el prompt. | **LangChain (Python)**: coordina la recuperación del articulado y la generación del semáforo de riesgo. |
+| **Modelo (LLM)** | **OpenRouter** — modelos `:free` | El "cerebro" que redacta y analiza. | **OpenRouter** (modelos como `meta-llama/llama-3.3-70b-instruct:free` o `google/gemini-2.0-flash-exp:free`). |
+| **Memoria de fuentes (RAG)** | LangChain + almacén de vectores (**Chroma** o **FAISS**) | Garantiza que el modelo responda citando la norma y evite alucinaciones jurídicas. | **Chroma / FAISS local** cargado con la Ley 1581 de 2012 y el Decreto 1377 de 2013 en `/corpus`. |
+| **Trazabilidad** *(opcional)* | **LangSmith** (plan gratuito) | Monitorear tokens, latencia y depurar el pipeline. | Opcional para depurar las respuestas del evaluador de cláusulas. |
 ---
 
 ## 🚀 Parte 4 — Ruta de despliegue
