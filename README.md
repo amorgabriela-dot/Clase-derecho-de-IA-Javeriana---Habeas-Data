@@ -155,13 +155,13 @@ Dado que nuestra arquitectura usa Python y Streamlit (definida en la Parte 3), l
 ---
 
 ### Checklist de despliegue ✅
-- [ ] Archivo `requirements.txt` creado con dependencias (`streamlit`, `langchain`, etc.) ✅
-- [ ] Archivo `.gitignore` activo para evitar filtraciones de `.env` ✅
-- [ ] Aplicación `app.py` lista con interfaz y advertencia legal visible
+- [x] Archivo `requirements.txt` creado con dependencias (`streamlit`, `langchain`, etc.) ✅
+- [x] Archivo `.gitignore` activo para evitar filtraciones de `.env` ✅
+- [x] Aplicación `app.py` lista con interfaz y advertencia legal visible ✅
 - [ ] Despliegue completado en Streamlit Community Cloud
 - [ ] URL pública funciona en el navegador de otra persona (pídele a alguien que la abra)
-- [ ] La advertencia de la Parte 6 es **visible** en la interfaz
-- [ ] No hay API keys ni secretos en el código (verificado en el repo)
+- [x] La advertencia de la Parte 6 es **visible** en la interfaz ✅
+- [x] No hay API keys ni secretos en el código (verificado en el repo) ✅
 - [ ] URL pública asignada: **`https://privacheck-co.streamlit.app`** (o la asignada por Streamlit Cloud)
 
 ---
