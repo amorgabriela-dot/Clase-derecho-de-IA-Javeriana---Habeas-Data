@@ -39,8 +39,8 @@ Usuarios que van a registrarse en una nueva aplicación o página web y tiene qu
 
 ### 1.4 Marco jurídico y fuentes
 ¿Qué normas alimentan tu herramienta? Lista tu corpus normativo (leyes, decretos, sentencias — debe ser **pequeño y público**):
-- [ ] Norma/sentencia 1: [Ley Estatutaria 1581 de 2012 (Disposiciones generales para la protección de datos personales) https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=49981]
-- [ ] Norma/sentencia 2: [Decreto 1377 de 2013 (Reglamentación parcial de la Ley 1581 de 2012 en materia de autorización y políticas de tratamiento) funcionpublica.gov.co/eva/gestornormativo/norma.php?i=53646]
+- [x] Norma/sentencia 1: [Ley Estatutaria 1581 de 2012 (Disposiciones generales para la protección de datos personales) https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=49981 — texto cargado en `corpus/ley-1581-2012.md`]
+- [x] Norma/sentencia 2: [Decreto 1377 de 2013 (Reglamentación parcial de la Ley 1581 de 2012 en materia de autorización y políticas de tratamiento) https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=53646 — texto cargado en `corpus/decreto-1377-2013.md`]
 
 ### 1.5 Nombre y lema
 Un nombre corto para tu herramienta y una frase que explique qué hace (la usarás en la demo del día de presentaciones).
@@ -52,11 +52,11 @@ PrivaCheck CO - "Claridad y control sobre tus datos personales en un solo clic."
 Marca cada hito cuando lo termines. Los hitos siguen las sesiones del curso.
 
 - [x] **M0 — Descripción y plan** *(con Sesión 1)*: Partes 1 y 2 de este README completas.
-- [ ] **M1 — Asistente con instrucciones v1** *(Sesión 1–2)*: redactaste las instrucciones (prompt de sistema) de tu asistente y funcionan en una herramienta gratuita de chat.
-- [ ] **M2 — Casos de prueba documentados** *(Sesión 2)*: tienes al menos 5 casos de prueba (donde antes fallaba) con resultados guardados en `docs/casos-de-prueba.md`.
-- [ ] **M3 — Corpus conectado (RAG)** *(Sesión 3)*: tu asistente **cita la fuente** normativa que usa y no inventa. Corpus cargado en `corpus/`.
-- [x] **M4 — Interfaz web desplegada** *(Sesión 4)*: tu herramienta tiene **URL pública**: [PrivaCheck CO en Streamlit Cloud](https://amorgabriela-dot-clase-derecho-de-ia-javeriana---hab-app-wqinfd.streamlit.app/).
-- [ ] **M5 — Análisis crítico y demo** *(Sesión 5)*: Parte 7 completada + presentación de 5 minutos.
+- [x] **M1 — Asistente con instrucciones v1** *(Sesión 1–2)*: redactaste las instrucciones (prompt de sistema) de tu asistente y funcionan en una herramienta gratuita de chat. Documentado en [`docs/instrucciones-asistente.md`](docs/instrucciones-asistente.md).
+- [x] **M2 — Casos de prueba documentados** *(Sesión 2)*: tienes al menos 5 casos de prueba (donde antes fallaba) con resultados guardados en [`docs/casos-de-prueba.md`](docs/casos-de-prueba.md).
+- [x] **M3 — Corpus conectado (RAG)** *(Sesión 3)*: tu asistente **cita la fuente** normativa que usa y no inventa. Corpus cargado en [`corpus/`](corpus/).
+- [x] **M4 — Interfaz web desplegada** *(Sesión 4)*: tu herramienta tiene **URL pública**: [PrivaCheck CO en Streamlit Cloud](https://amorgabriela-dot-clase-derecho-de-ia-javeriana---hab-app-wqinfd.streamlit.app/) y prueba con usuario real en [`docs/evidencia-usuario.md`](docs/evidencia-usuario.md).
+- [x] **M5 — Análisis crítico y demo** *(Sesión 5)*: Parte 7 completada + sustentación final preparada.
 
 ### Bitácora de avance semanal
 | Semana | Qué hice | Enlace/captura | Dudas para la clase |
@@ -65,7 +65,7 @@ Marca cada hito cuando lo termines. Los hitos siguen las sesiones del curso.
 | 2 | Diseño de la arquitectura y definición del stack técnico | [README.md Parte 3](README.md) | Ninguna |
 | 3 | Configuración del repositorio y motor normativo | [app.py](app.py) | Ninguna |
 | 4 | Despliegue de la interfaz web en Streamlit Cloud | [App en Vivo](https://amorgabriela-dot-clase-derecho-de-ia-javeriana---hab-app-wqinfd.streamlit.app/) | Ninguna |
-| 5 | | | |
+| 5 | Validación con usuario real, casos de prueba y análisis crítico | [docs/evidencia-usuario.md](docs/evidencia-usuario.md) · [docs/casos-de-prueba.md](docs/casos-de-prueba.md) | Ninguna |
 
 ---
 
@@ -198,23 +198,29 @@ Estas salvaguardas son **obligatorias** y hacen parte de la evaluación:
 
 - **Advertencia visible obligatoria.** Tu interfaz debe mostrar, en lugar visible:
   > *"Esta herramienta es un ejercicio académico que no constituye asesoría legal ni sustituye la consulta con un abogado."*
-  - [x] Implementada y visible en la interfaz (verificada en la app web)
+  - [x] Implementada y visible en la interfaz (verificada en la app web en Streamlit Cloud)
 - **Protección de datos (Ley 1581 de 2012).** Tu herramienta **no recolecta ni almacena datos personales reales** de usuarios de prueba. Los usuarios de prueba usan situaciones ficticias o datos inventados.
-  - [x] Verificado: no guardo datos personales
+  - [x] Verificado: no guardo datos personales (procesamiento estrictamente en memoria volátil)
 - **Corpus público.** Solo fuentes públicas: leyes, decretos, jurisprudencia publicada.
-  - [x] Verificado (Ley 1581 de 2012 y Decreto 1377 de 2013)
+  - [x] Verificado: Ley 1581 de 2012 y Decreto 1377 de 2013 integrados en `corpus/`
 - **Anti-alucinaciones.** El asistente debe citar la fuente de cada afirmación jurídica y admitir cuando no la tiene.
-  - [ ] Casos de prueba donde la herramienta se niega a inventar
+  - [x] Casos de prueba donde la herramienta se niega a inventar y delimita su alcance (documentado en [`docs/casos-de-prueba.md`](docs/casos-de-prueba.md))
 
 ---
 
 ## 🔍 Parte 7 — Análisis crítico (insumo de tu sustentación final)
 
-Responde con total honestidad — aquí es donde demuestras tu criterio jurídico:
+### 1. ¿Dónde falla tu herramienta? (2 situaciones límite identificadas)
+1. **Cláusulas con remisión externa y lenguaje deliberadamente ambiguo:** Cuando una aplicación formula cláusulas redactadas mediante técnicas de ofuscación legal o remite a políticas suplementarias mediante enlaces (ej. *"el tratamiento se sujetará a las políticas generales de las empresas matrices y filiales del grupo"*), la herramienta evalúa únicamente el fragmento textual suministrado de forma aislada. Si la arbitrariedad reside en los términos enlazados y no en el texto copiado, la herramienta puede arrojar un falso negativo (riesgo bajo o medio) al no poder auditar dinámicamente todo el ecosistema de contratos interconectados.
+2. **Discordancia entre la política declarada y el código fuente real (Backend / Tráfico de datos):** La herramienta analiza exclusivamente la declaración formal de voluntad jurídica. Si una app afirma en sus términos y condiciones que *"no recolecta la lista de contactos ni geolocalización"*, pero a nivel técnico de desarrollo contiene librerías ocultas (SDKs de telemetría o publicidad) que extraen esos datos en segundo plano sin consentimiento, la herramienta es incapaz de descubrir la infracción, dado que audita el lenguaje legal mas no ejecuta análisis de tráfico de red ni ingeniería inversa de binarios.
 
-1. **¿Dónde falla tu herramienta?** Describe 2 situaciones donde se equivoca o se queda corta.
-2. **¿Qué datos procesa?** Qué entra, qué se guarda, qué sale.
-3. **¿Por qué no reemplaza al abogado?** Argumenta en 5–8 frases.
+### 2. ¿Qué datos procesa?
+- **Qué entra:** Cláusulas contractuales, extractos de políticas de privacidad o listas de permisos solicitados por aplicaciones que el usuario pega manualmente en la caja de texto. No se exige ni se procesa ningún dato de identificación personal del usuario que realiza la consulta (nombres, cédulas, correos o teléfonos).
+- **Qué se guarda:** **Absolutamente nada.** El procesamiento se ejecuta en memoria volátil en la sesión de Streamlit durante el tiempo que dura la consulta. No existe almacenamiento en bases de datos relacionales, ni logs de IP vinculados al usuario, ni cookies de rastreo persistente, garantizando el principio de minimización y seguridad de la Ley 1581 de 2012.
+- **Qué sale:** Un dictamen estructurado en tiempo real que contiene: (i) Semáforo del nivel de riesgo (🔴 Alto, 🟡 Medio, 🟢 Bajo); (ii) Alertas específicas sobre desproporción de permisos o transferencias ilícitas; (iii) Fundamento normativo exacto citando artículos de la Ley 1581 de 2012 o Decreto 1377 de 2013; (iv) Recomendaciones prácticas para el titular; y (v) La advertencia legal de no sustitución de abogado.
+
+### 3. ¿Por qué no reemplaza al abogado? (Argumentación jurídica)
+PrivaCheck CO es una herramienta de orientación preventiva y pedagogía ciudadana, pero de ninguna manera sustituye el juicio técnico ni la representación legal de un abogado. La calificación de un tratamiento de datos no es una operación matemática de simple coincidencia de palabras clave, sino un ejercicio hermenéutico que exige ponderar principios constitucionales en tensión (como la intimidad frente a la libertad de empresa del artículo 333 de la C.P.) bajo las circunstancias fácticas de cada modelo de negocio. Asimismo, solo un abogado puede evaluar la concurrencia de excepciones legales complejas (artículo 10 de la Ley 1581), analizar la relación causal del daño, interpretar los precedentes sancionatorios de la Delegatura de Protección de Datos de la SIC y diseñar una estrategia contenciosa adecuada. Finalmente, la inteligencia artificial no puede interponer un derecho de petición ajustado a derecho, formular recursos gubernativos ni representar procesalmente al afectado en una acción de tutela o queja administrativa formal. En síntesis, la herramienta democratiza el entendimiento de las cláusulas abusivas, pero la tutela judicial efectiva y el litigio estratégico siguen dependiendo del criterio insustituible del jurista.
 
 ---
 
@@ -223,10 +229,10 @@ Responde con total honestidad — aquí es donde demuestras tu criterio jurídic
 Requisitos de entrega del curso — todos deben estar ✅:
 
 - [x] 🔗 **Solución funcionando**: resuelve el problema jurídico y está desplegada con URL pública: [PrivaCheck CO en Vivo](https://amorgabriela-dot-clase-derecho-de-ia-javeriana---hab-app-wqinfd.streamlit.app/).
-- [ ] 👤 **Usuario real**: al menos una persona externa al curso la usó, con evidencia (video corto o testimonio). Guarda la evidencia en `docs/evidencia-usuario.md`.
+- [x] 👤 **Usuario real**: al menos una persona externa al curso la usó, con evidencia (video corto o testimonio). Guarda la evidencia en [`docs/evidencia-usuario.md`](docs/evidencia-usuario.md).
 - [x] 📦 **Repositorio con historial**: este repo muestra tus avances semanales (commits + bitácora).
-- [ ] 🧠 **Análisis crítico**: Parte 7 completada.
-- [ ] 📋 Partes 1–7 de este README completas y al día.
+- [x] 🧠 **Análisis crítico**: Parte 7 completada.
+- [x] 📋 Partes 1–7 de este README completas y al día.
 
 ---
 
