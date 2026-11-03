@@ -40,7 +40,7 @@ Usuarios que van a registrarse en una nueva aplicación o página web y tiene qu
 ### 1.4 Marco jurídico y fuentes
 ¿Qué normas alimentan tu herramienta? Lista tu corpus normativo (leyes, decretos, sentencias — debe ser **pequeño y público**):
 - [ ] Norma/sentencia 1: [Ley Estatutaria 1581 de 2012 (Disposiciones generales para la protección de datos personales) https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=49981]
-- [ ] Norma/sentencia 2: [Decreto 1377 de 2013 (Reglamentación parcial de la Ley 1581 de 2012 en materia de autorización y políticas de tratamiento) uncionpublica.gov.co/eva/gestornormativo/norma.php?i=53646]
+- [ ] Norma/sentencia 2: [Decreto 1377 de 2013 (Reglamentación parcial de la Ley 1581 de 2012 en materia de autorización y políticas de tratamiento)funcionpublica.gov.co/eva/gestornormativo/norma.php?i=53646]
 
 ### 1.5 Nombre y lema
 Un nombre corto para tu herramienta y una frase que explique qué hace (la usarás en la demo del día de presentaciones).
